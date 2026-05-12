@@ -25,64 +25,175 @@
       </div>
     </nav>
 
-    <main class="page-shell">
-      <section class="container">
-        <p class="eyebrow">Skills</p>
-        <h1 class="page-title">Technieken en kwaliteiten.</h1>
-        <div class="row g-4 mt-2">
-          <div class="col-lg-6">
-            <article class="skill-block reveal">
-              <div class="d-flex justify-content-between">
-                <h2>HTML & semantiek</h2>
-                <span>90%</span>
-              </div>
-              <div class="progress luxury-progress" role="progressbar" aria-label="HTML vaardigheid" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 90%"></div>
-              </div>
-            </article>
+    <main class="page-shell skills-page">
+      <section class="container skills-hero">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="skills-intro reveal">
+              <p class="eyebrow">Skills</p>
+              <h1 class="skills-title">Mijn vaardigheden<span>.</span></h1>
+              <p class="skills-lead">Een mix van technische expertise, probleemoplossend vermogen en oog voor kwaliteit. Continu leren en verbeteren.</p>
+              <a class="skills-cta" href="projecten.html">
+                <span aria-hidden="true">[]</span>
+                Bekijk mijn projecten
+                <span aria-hidden="true">-></span>
+              </a>
+            </div>
           </div>
-          <div class="col-lg-6">
-            <article class="skill-block reveal">
-              <div class="d-flex justify-content-between">
-                <h2>Bootstrap layouts</h2>
-                <span>85%</span>
-              </div>
-              <div class="progress luxury-progress" role="progressbar" aria-label="Bootstrap vaardigheid" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 85%"></div>
-              </div>
-            </article>
-          </div>
-          <div class="col-lg-6">
-            <article class="skill-block reveal">
-              <div class="d-flex justify-content-between">
-                <h2>CSS styling</h2>
-                <span>88%</span>
-              </div>
-              <div class="progress luxury-progress" role="progressbar" aria-label="CSS vaardigheid" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 88%"></div>
-              </div>
-            </article>
-          </div>
-          <div class="col-lg-6">
-            <article class="skill-block reveal">
-              <div class="d-flex justify-content-between">
-                <h2>JavaScript interactie</h2>
-                <span>78%</span>
-              </div>
-              <div class="progress luxury-progress" role="progressbar" aria-label="JavaScript vaardigheid" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" style="width: 78%"></div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="container section-gap">
-        <div class="row g-4">
-          <div class="col-md-4"><div class="tag-card reveal">Responsive design</div></div>
-          <div class="col-md-4"><div class="tag-card reveal">Toegankelijkheid</div></div>
-          <div class="col-md-4"><div class="tag-card reveal">Visuele hiërarchie</div></div>
+          <div class="col-lg-7">
+            <article class="skills-panel reveal">
+              <h2 class="panel-title">Technische vaardigheden</h2>
+              <div class="skills-meter-grid">
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>JavaScript (ES6+)</span><strong>70%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--70"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>HTML &amp; CSS</span><strong>80%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--80"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>Git &amp; GitHub</span><strong>70%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--70"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>Golang</span><strong>65%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--65"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>PHP</span><strong>65%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--65"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>MySQL</span><strong>65%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--65"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>UX</span><strong>60%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--60"></span></div>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-meter__row"><span>VirtualBox</span><strong>60%</strong></div>
+                  <div class="skill-track"><span class="skill-fill skill-fill--60"></span></div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
+
+        <section class="tool-panel reveal" aria-labelledby="tools-title">
+          <h2 class="panel-title" id="tools-title">Technologieen &amp; tools</h2>
+
+          <div class="tool-tabs" aria-label="Skill categorieen">
+            <button class="tool-tab is-active" type="button" data-tools-tab="frontend" aria-pressed="true">[] Frontend</button>
+            <button class="tool-tab" type="button" data-tools-tab="backend" aria-pressed="false">{} Backend</button>
+            <button class="tool-tab" type="button" data-tools-tab="database" aria-pressed="false">== Database</button>
+            <button class="tool-tab" type="button" data-tools-tab="tools" aria-pressed="false">&lt;&gt; DevOps &amp; Tools</button>
+            <button class="tool-tab" type="button" data-tools-tab="design" aria-pressed="false">+ Design &amp; Others</button>
+          </div>
+
+          <div class="tool-grid">
+            <div class="tool-item" data-tools-panel="frontend">
+              <span class="tool-icon icon-js">JS</span>
+              <span class="tool-name">JavaScript</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item" data-tools-panel="frontend">
+              <span class="tool-icon icon-html">5</span>
+              <span class="tool-name">HTML5</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item" data-tools-panel="frontend">
+              <span class="tool-icon icon-css">3</span>
+              <span class="tool-name">CSS3</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="backend">
+              <span class="tool-icon icon-go">Go</span>
+              <span class="tool-name">Go</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="backend">
+              <span class="tool-icon icon-php">PHP</span>
+              <span class="tool-name">PHP</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="database">
+              <span class="tool-icon icon-mysql">SQL</span>
+              <span class="tool-name">MySQL</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="database">
+              <span class="tool-icon icon-phpmyadmin">pMA</span>
+              <span class="tool-name">phpMyAdmin</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="tools">
+              <span class="tool-icon icon-github">GH</span>
+              <span class="tool-name">GitHub</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="tools">
+              <span class="tool-icon icon-vscode">VS</span>
+              <span class="tool-name">VS Code</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="tools">
+              <span class="tool-icon icon-vbox">VB</span>
+              <span class="tool-name">VirtualBox</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="design">
+              <span class="tool-icon icon-canva">C</span>
+              <span class="tool-name">Canva</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="design">
+              <span class="tool-icon icon-ux">UX</span>
+              <span class="tool-name">UX</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="tool-item is-hidden" data-tools-panel="design">
+              <span class="tool-icon icon-wireframe">WF</span>
+              <span class="tool-name">Wireframe</span>
+              <span class="dot-row" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            </div>
+          </div>
+
+          <div class="row g-3 stats-row">
+            <div class="col-md-4">
+              <div class="stat-tile">
+                <span class="stat-icon" aria-hidden="true">[]</span>
+                <div>
+                  <span class="stat-number">1+</span>
+                  <span class="stat-label">Jaar ervaring</span>
+                  <span class="stat-note">Professionele ontwikkeling</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-tile">
+                <span class="stat-icon" aria-hidden="true">&lt;/&gt;</span>
+                <div>
+                  <span class="stat-number">3+</span>
+                  <span class="stat-label">Projecten voltooid</span>
+                  <span class="stat-note">Van concept tot productie</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-tile">
+                <span class="stat-icon" aria-hidden="true">~</span>
+                <div>
+                  <span class="stat-number">Continu</span>
+                  <span class="stat-label">Lerend &amp; verbeterend</span>
+                  <span class="stat-note">Nieuwe technologieen ontdekken</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
 
