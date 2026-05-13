@@ -130,6 +130,127 @@ a {
   border-color: var(--gold-soft);
 }
 
+.codebar-stack {
+  margin-top: 4.5rem;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+  width: 100%;
+}
+
+.codebar-stack__track {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem clamp(1.2rem, 3.4vw, 2.75rem);
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.85rem 0 0;
+  width: 100%;
+}
+
+.codebar-tech {
+  align-items: center;
+  color: rgba(247, 251, 255, 0.9);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.74rem;
+  gap: 0.46rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.codebar-icon {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 18px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  height: 18px;
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  width: 18px;
+}
+
+.codebar-icon--js {
+  background: #f7df1e;
+  color: #111;
+}
+
+.codebar-icon--ts {
+  background: #3178c6;
+  color: #fff;
+}
+
+.codebar-icon--react {
+  color: #00d8ff;
+  font-size: 1.55rem;
+  font-weight: 400;
+}
+
+.codebar-icon--next {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.7rem;
+}
+
+.codebar-icon--node {
+  border: 1px solid #5fa721;
+  border-radius: 3px;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  color: #5fa721;
+  font-size: 0.54rem;
+}
+
+.codebar-icon--node::before {
+  background: rgba(95, 167, 33, 0.16);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.codebar-icon--tailwind {
+  color: #38bdf8;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.codebar-icon--postgres {
+  border: 1px solid #699eca;
+  border-radius: 3px;
+  color: #699eca;
+  font-size: 0.52rem;
+}
+
+.codebar-icon--git {
+  background: #f05032;
+  border-radius: 2px;
+  transform: rotate(45deg) scale(0.82);
+}
+
+.codebar-icon--git::before,
+.codebar-icon--git::after {
+  background: #111;
+  border-radius: 999px;
+  content: "";
+  height: 4px;
+  position: absolute;
+  width: 4px;
+}
+
+.codebar-icon--git::before {
+  left: 4px;
+  top: 4px;
+}
+
+.codebar-icon--git::after {
+  right: 4px;
+  bottom: 4px;
+}
+
 .profile-panel,
 .lux-card,
 .skill-block,
