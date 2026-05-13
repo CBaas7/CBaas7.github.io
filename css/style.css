@@ -1,4 +1,5 @@
 :root {
+  /* Kleurvariabelen sturen de hele site; wijzig ze hier om de huisstijl consistent te houden. */
   --blue-950: #050b1f;
   --blue-900: #081638;
   --blue-800: #10275a;
@@ -42,6 +43,7 @@ a {
   box-shadow: none;
 }
 
+/* Deze class wordt door js/main.js gezet zodra de pagina genoeg is gescrold. */
 .home-page .glass-nav.is-scrolled,
 .inner-page .glass-nav.is-scrolled {
   background: rgba(5, 11, 31, 0.9);
@@ -279,6 +281,7 @@ a {
   bottom: 4px;
 }
 
+/* Kaarten delen dezelfde basisstijl. Verander deze voorzichtig: dit raakt meerdere onderdelen. */
 .profile-panel,
 .lux-card,
 .project-card {
@@ -296,6 +299,7 @@ a {
 }
 
 .profile-panel {
+  /* Alleen de profielkaart op de homepage. Houd padding en radius stabiel voor nette uitlijning. */
   border-radius: 8px;
   padding: 2rem;
 }
@@ -809,12 +813,103 @@ a {
   padding: 1.35rem;
 }
 
+/* Footer component: gebruikt op alle HTML-pagina's. Houd classnamen gelijk aan de footer-markup. */
 .site-footer {
-  border-top: 1px solid rgba(245, 240, 230, 0.08);
+  background: rgba(3, 6, 19, 0.58);
+  border-top: 1px solid rgba(240, 217, 154, 0.14);
   color: var(--mist);
-  padding: 1.5rem 0;
+  margin-top: 4rem;
+  padding: 2.4rem 0 1.25rem;
 }
 
+.footer-grid {
+  /* Linkerkant merk/signatuur, rechterkant linkkolommen. Op mobiel wordt dit 1 kolom. */
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.65fr);
+}
+
+.footer-brand {
+  max-width: 34rem;
+}
+
+.footer-logo {
+  color: var(--gold-soft);
+  display: inline-flex;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.footer-logo:hover {
+  color: var(--ivory);
+}
+
+.footer-signature {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.15rem;
+}
+
+.footer-signature span {
+  align-items: center;
+  display: inline-flex;
+  font-size: 0.88rem;
+}
+
+.footer-signature span + span::before {
+  background: var(--gold);
+  border-radius: 999px;
+  content: "";
+  height: 0.28rem;
+  margin-right: 0.55rem;
+  width: 0.28rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links {
+  /* Nieuwe footer-links horen in deze wrapper, zodat de twee kolommen netjes naast elkaar blijven. */
+  display: grid;
+  gap: 2.25rem;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: end;
+}
+
+.footer-nav a {
+  color: rgba(245, 240, 230, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  padding: 0.1rem 0;
+  transition: color 180ms ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-soft);
+}
+
+.footer-bottom {
+  align-items: center;
+  border-top: 1px solid rgba(245, 240, 230, 0.08);
+  color: rgba(184, 199, 217, 0.82);
+  display: flex;
+  font-size: 0.86rem;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+/* .reveal start verborgen; js/main.js voegt .is-visible toe wanneer het element in beeld komt. */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -826,6 +921,7 @@ a {
   transform: translateY(0);
 }
 
+/* Breakpoints volgen Bootstrap lg/sm, zodat grid en navbar tegelijk omschakelen. */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     background: rgba(5, 11, 31, 0.94);
@@ -883,5 +979,31 @@ a {
 
   .tool-item:nth-child(2n) {
     border-right: 0;
+  }
+
+  .site-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+
+  .footer-grid {
+    /* Mobiele footer: alles onder elkaar om overlappende tekst te voorkomen. */
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-nav {
+    justify-content: flex-start;
+  }
+
+  .footer-links {
+    gap: 2rem;
+    justify-content: start;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 }

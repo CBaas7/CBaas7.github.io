@@ -1,3 +1,4 @@
+// Scroll-animatie: elk element met .reveal wordt eenmalig zichtbaar gemaakt met .is-visible.
 const revealItems = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
@@ -18,6 +19,7 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
+// Navbar krijgt extra achtergrond na scrollen; CSS gebruikt .glass-nav.is-scrolled.
 const nav = document.querySelector(".glass-nav");
 
 if (nav) {
@@ -26,6 +28,7 @@ if (nav) {
   });
 }
 
+// Skills-tabs: data-tools-tab op de knop moet overeenkomen met data-tools-panel op de items.
 const toolTabs = document.querySelectorAll("[data-tools-tab]");
 const toolItems = document.querySelectorAll("[data-tools-panel]");
 

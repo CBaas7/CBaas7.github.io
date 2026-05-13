@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="home-page">
+    <!-- Navigatie: data-bs-target moet blijven verwijzen naar id="mainNav" voor het mobiele Bootstrap-menu. -->
     <nav class="navbar navbar-expand-lg fixed-top glass-nav" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand brand-mark" href="index.html">Portfolio</a>
@@ -31,7 +32,7 @@
           <div class="row align-items-center min-vh-100 hero-grid">
             <div class="col-lg-7">
               <p class="eyebrow">Webdeveloper</p>
-              <h1 class="display-3 fw-semibold text-white">Calvin baas</h1>
+              <h1 class="display-3 fw-semibold text-white">Calvin Baas</h1>
               <p class="lead hero-copy">Ik ontwerp en bouw moderne websites met aandacht voor structuur, sfeer en gebruiksgemak.</p>
               <div class="d-flex flex-wrap gap-3 mt-4">
                 <a class="btn btn-gold btn-lg" href="projecten.html">Bekijk projecten</a>
@@ -39,6 +40,7 @@
               </div>
             </div>
             <div class="col-lg-5 mt-5 mt-lg-0">
+              <!-- Profielkaart: houd de class 'profile-panel reveal' intact; CSS en animatie hangen hieraan. -->
               <div class="profile-panel reveal">
                 <span class="panel-kicker">Beschikbaar voor</span>
                 <h2>Frontend, backend en branding</h2>
@@ -56,6 +58,7 @@
               </div>
             </div>
             <div class="col-12">
+              <!-- Codebar gebruikt vaste classnamen voor iconkleuren; voeg nieuwe technieken toe met bijpassende CSS. -->
               <div class="codebar-stack reveal" aria-label="Technologieen waarmee ik werk">
                 <div class="codebar-stack__track">
                   <span class="codebar-tech">
@@ -120,10 +123,35 @@
       </section>
     </main>
 
+    <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
-      <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>Portfolio</span>
-        <span>&copy;Calvin baas</span>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">Calvin Baas</a>
+            <div class="footer-signature" aria-label="Focuspunten">
+              <span>Design</span>
+              <span>Code</span>
+              <span>Gebruiksgemak</span>
+            </div>
+          </div>
+          <div class="footer-links">
+            <nav class="footer-nav" aria-label="Footer navigatie">
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="skills.html">Skills</a>
+              <a href="projecten.html">Projecten</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Professionele links">
+              <a href="#" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">CV</a>
+            </nav>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Calvin Baas</span>
+          <span>Portfolio website</span>
+        </div>
       </div>
     </footer>
 

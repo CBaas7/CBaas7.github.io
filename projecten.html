@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="inner-page">
+    <!-- Navigatie: data-bs-target moet blijven verwijzen naar id="mainNav" voor het mobiele Bootstrap-menu. -->
     <nav class="navbar navbar-expand-lg fixed-top glass-nav" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand brand-mark" href="index.html">Portfolio</a>
@@ -29,6 +30,7 @@
       <section class="container">
         <p class="eyebrow">Projecten</p>
         <h1 class="page-title">Geselecteerd werk.</h1>
+        <!-- Projectkaarten gebruiken visual-one/two/three voor de achtergrondbeelden in css/style.css. -->
         <div class="row g-4 mt-2">
           <div class="col-lg-4">
             <article class="project-card reveal">
@@ -64,10 +66,35 @@
       </section>
     </main>
 
+    <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
-      <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>Portfolio</span>
-        <span>Projecten</span>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">Calvin Baas</a>
+            <div class="footer-signature" aria-label="Focuspunten">
+              <span>Design</span>
+              <span>Code</span>
+              <span>Gebruiksgemak</span>
+            </div>
+          </div>
+          <div class="footer-links">
+            <nav class="footer-nav" aria-label="Footer navigatie">
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="skills.html">Skills</a>
+              <a href="projecten.html">Projecten</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Professionele links">
+              <a href="#" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">CV</a>
+            </nav>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Calvin Baas</span>
+          <span>Portfolio website</span>
+        </div>
       </div>
     </footer>
 

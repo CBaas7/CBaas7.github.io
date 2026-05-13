@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="inner-page">
+    <!-- Navigatie: data-bs-target moet blijven verwijzen naar id="mainNav" voor het mobiele Bootstrap-menu. -->
     <nav class="navbar navbar-expand-lg fixed-top glass-nav" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand brand-mark" href="index.html">Portfolio</a>
@@ -44,6 +45,7 @@
           <div class="col-lg-7">
             <article class="skills-panel reveal">
               <h2 class="panel-title">Technische vaardigheden</h2>
+              <!-- Percentages: pas zowel de tekst als de skill-fill--xx class aan, anders klopt de balk niet. -->
               <div class="skills-meter-grid">
                 <div class="skill-meter">
                   <div class="skill-meter__row"><span>JavaScript (ES6+)</span><strong>70%</strong></div>
@@ -85,6 +87,7 @@
         <section class="tool-panel reveal" aria-labelledby="tools-title">
           <h2 class="panel-title" id="tools-title">Technologieen &amp; tools</h2>
 
+          <!-- Tabs en items zijn gekoppeld via data-tools-tab en data-tools-panel; gebruik exact dezelfde categorienaam. -->
           <div class="tool-tabs" aria-label="Skill categorieen">
             <button class="tool-tab is-active" type="button" data-tools-tab="frontend" aria-pressed="true">[] Frontend</button>
             <button class="tool-tab" type="button" data-tools-tab="backend" aria-pressed="false">{} Backend</button>
@@ -197,10 +200,35 @@
       </section>
     </main>
 
+    <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
-      <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>Portfolio</span>
-        <span>Skills</span>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">Calvin Baas</a>
+            <div class="footer-signature" aria-label="Focuspunten">
+              <span>Design</span>
+              <span>Code</span>
+              <span>Gebruiksgemak</span>
+            </div>
+          </div>
+          <div class="footer-links">
+            <nav class="footer-nav" aria-label="Footer navigatie">
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="skills.html">Skills</a>
+              <a href="projecten.html">Projecten</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Professionele links">
+              <a href="#" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">CV</a>
+            </nav>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Calvin Baas</span>
+          <span>Portfolio website</span>
+        </div>
       </div>
     </footer>
 
