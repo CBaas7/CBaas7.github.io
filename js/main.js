@@ -1,24 +1,32 @@
 const revealItems = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.16 }
-);
+if ("IntersectionObserver" in window) {
+  let revealObserver;
 
-revealItems.forEach((item) => observer.observe(item));
+  revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16 }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
 
 const nav = document.querySelector(".glass-nav");
 
-window.addEventListener("scroll", () => {
-  nav.classList.toggle("is-scrolled", window.scrollY > 20);
-});
+if (nav) {
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("is-scrolled", window.scrollY > 20);
+  });
+}
 
 const toolTabs = document.querySelectorAll("[data-tools-tab]");
 const toolItems = document.querySelectorAll("[data-tools-panel]");
