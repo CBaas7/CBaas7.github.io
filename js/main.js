@@ -1,9 +1,7 @@
 const revealItems = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
-  let revealObserver;
-
-  revealObserver = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
