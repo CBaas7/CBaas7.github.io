@@ -5,21 +5,32 @@ if (gameCanvas) {
   const scoreElement = document.querySelector("[data-game-score]");
   const statusElement = document.querySelector("[data-game-status]");
   const resetButton = document.querySelector("[data-game-reset]");
-  const gravity = 0.42;
-  const friction = 0.985;
-  const ballRadius = 18;
+  const gravity = 0.36;
+  const friction = 0.99;
+  const ballRadius = 20;
   let score = 0;
   let isDragging = false;
   let dragPoint = null;
   let hasScoredThisThrow = false;
+  let hasKicked = false;
+  let roundResetTimer = null;
   let animationId = null;
+  let popupMessage = "";
+  const rugbyJokes = [
+    "Rugbyfeitje: de bal stuitert zo raar omdat zelfs hij contact probeert te vermijden.",
+    "Waarom nam de rugbyer een ladder mee? Voor een hogere conversie.",
+    "Deze kick was zo strak dat zelfs de palen even respectvol stil stonden.",
+  ];
+  const retryMessage = "Net naast. Zelfs de bal wil soms eerst warming-up doen.";
 
-  const ballStart = { x: 120, y: gameCanvas.height - 95 };
-  const hoop = {
-    x: gameCanvas.width - 170,
-    y: 220,
-    width: 104,
-    height: 22,
+  const pitchGround = gameCanvas.height - 66;
+  const ballStart = { x: 155, y: pitchGround - 21 };
+  const goal = {
+    leftPost: gameCanvas.width - 230,
+    rightPost: gameCanvas.width - 86,
+    crossbarY: 250,
+    postTop: 62,
+    groundY: pitchGround,
   };
 
   const ball = {
@@ -35,6 +46,10 @@ if (gameCanvas) {
     }
   };
 
+  const showPopup = (message) => {
+    popupMessage = message;
+  };
+
   const syncScore = () => {
     if (scoreElement) {
       scoreElement.textContent = score;
@@ -42,6 +57,8 @@ if (gameCanvas) {
   };
 
   const resetBall = () => {
+    window.clearTimeout(roundResetTimer);
+    roundResetTimer = null;
     ball.x = ballStart.x;
     ball.y = ballStart.y;
     ball.vx = 0;
@@ -49,13 +66,23 @@ if (gameCanvas) {
     dragPoint = null;
     isDragging = false;
     hasScoredThisThrow = false;
+    hasKicked = false;
+  };
+
+  const resetRound = () => {
+    window.clearTimeout(roundResetTimer);
+    roundResetTimer = window.setTimeout(() => {
+      resetBall();
+      setStatus("Sleep de rugbybal naar achteren, richt tussen de palen en laat los.");
+    }, 800);
   };
 
   const resetGame = () => {
     score = 0;
+    popupMessage = "";
     syncScore();
     resetBall();
-    setStatus("Sleep de bal naar achteren en laat los.");
+    setStatus("Sleep de rugbybal naar achteren, richt tussen de palen en laat los.");
   };
 
   const getPointerPosition = (event) => {
@@ -74,44 +101,130 @@ if (gameCanvas) {
     return distance <= ballRadius + 12;
   };
 
-  const drawCourt = () => {
+  const drawPitch = () => {
     context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 
-    context.fillStyle = "rgba(240, 217, 154, 0.1)";
-    context.fillRect(0, gameCanvas.height - 60, gameCanvas.width, 60);
+    context.fillStyle = "rgba(34, 139, 92, 0.42)";
+    context.fillRect(0, pitchGround, gameCanvas.width, gameCanvas.height - pitchGround);
+
+    context.strokeStyle = "rgba(245, 240, 230, 0.22)";
+    context.lineWidth = 2;
+    for (let lineX = 80; lineX < gameCanvas.width; lineX += 120) {
+      context.beginPath();
+      context.moveTo(lineX, pitchGround);
+      context.lineTo(lineX + 48, gameCanvas.height);
+      context.stroke();
+    }
 
     context.strokeStyle = "rgba(184, 199, 217, 0.18)";
     context.lineWidth = 2;
     context.beginPath();
-    context.moveTo(0, gameCanvas.height - 60);
-    context.lineTo(gameCanvas.width, gameCanvas.height - 60);
+    context.moveTo(0, pitchGround);
+    context.lineTo(gameCanvas.width, pitchGround);
     context.stroke();
 
-    context.fillStyle = "rgba(245, 240, 230, 0.88)";
-    context.fillRect(hoop.x + hoop.width - 10, hoop.y - 72, 12, 112);
-
-    context.fillStyle = "rgba(184, 199, 217, 0.88)";
-    context.fillRect(hoop.x + 42, hoop.y - 64, 72, 52);
-
-    context.strokeStyle = "#d8b76a";
-    context.lineWidth = 7;
+    context.strokeStyle = "rgba(245, 240, 230, 0.9)";
+    context.lineWidth = 8;
+    context.lineCap = "round";
     context.beginPath();
-    context.ellipse(hoop.x, hoop.y, hoop.width / 2, hoop.height / 2, 0, 0, Math.PI * 2);
+    context.moveTo(goal.leftPost, goal.groundY);
+    context.lineTo(goal.leftPost, goal.postTop);
+    context.moveTo(goal.rightPost, goal.groundY);
+    context.lineTo(goal.rightPost, goal.postTop);
+    context.moveTo(goal.leftPost, goal.crossbarY);
+    context.lineTo(goal.rightPost, goal.crossbarY);
     context.stroke();
-
-    context.strokeStyle = "rgba(240, 217, 154, 0.34)";
-    context.lineWidth = 2;
-    for (let i = 0; i < 7; i += 1) {
-      const startX = hoop.x - hoop.width / 2 + i * (hoop.width / 6);
-      context.beginPath();
-      context.moveTo(startX, hoop.y + 12);
-      context.lineTo(hoop.x - 34 + i * 11, hoop.y + 72);
-      context.stroke();
-    }
+    context.lineCap = "butt";
 
     context.fillStyle = "rgba(240, 217, 154, 0.85)";
     context.font = "700 18px Arial";
-    context.fillText("INBOX", hoop.x + 50, hoop.y - 27);
+    context.fillText("CONTACT", goal.leftPost + 16, goal.crossbarY + 34);
+  };
+
+  const getWrappedLines = (text, maxWidth) => {
+    const words = text.split(" ");
+    const lines = [];
+    let line = "";
+
+    words.forEach((word) => {
+      const testLine = line ? `${line} ${word}` : word;
+
+      if (context.measureText(testLine).width > maxWidth && line) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = testLine;
+      }
+    });
+
+    if (line) {
+      lines.push(line);
+    }
+
+    return lines;
+  };
+
+  const drawPopup = () => {
+    if (!popupMessage) {
+      return;
+    }
+
+    const popupWidth = 330;
+    const popupX = 24;
+    const popupY = 24;
+    const padding = 16;
+
+    context.save();
+    context.font = "700 16px Arial";
+    const lines = getWrappedLines(popupMessage, popupWidth - padding * 2);
+    const popupHeight = padding * 2 + lines.length * 22;
+
+    context.fillStyle = "rgba(5, 11, 31, 0.88)";
+    context.strokeStyle = "rgba(240, 217, 154, 0.76)";
+    context.lineWidth = 2;
+    context.beginPath();
+    context.roundRect(popupX, popupY, popupWidth, popupHeight, 8);
+    context.fill();
+    context.stroke();
+
+    context.fillStyle = "rgba(245, 240, 230, 0.95)";
+    lines.forEach((line, index) => {
+      context.fillText(line, popupX + padding, popupY + padding + 16 + index * 22);
+    });
+
+    context.restore();
+  };
+
+  const drawPlayer = () => {
+    const footX = ballStart.x - 54;
+    const footY = pitchGround - 1;
+
+    context.strokeStyle = "rgba(245, 240, 230, 0.92)";
+    context.lineWidth = 7;
+    context.lineCap = "round";
+
+    context.beginPath();
+    context.arc(footX, footY - 92, 17, 0, Math.PI * 2);
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(footX, footY - 72);
+    context.lineTo(footX + 9, footY - 38);
+    context.moveTo(footX - 24, footY - 60);
+    context.lineTo(footX + 22, footY - 54);
+    context.moveTo(footX + 9, footY - 38);
+    context.lineTo(footX - 14, footY - 3);
+    context.moveTo(footX + 9, footY - 38);
+    context.lineTo(footX + 46, footY - 10);
+    context.stroke();
+
+    context.strokeStyle = "rgba(216, 183, 106, 0.9)";
+    context.lineWidth = 5;
+    context.beginPath();
+    context.moveTo(footX - 12, footY - 73);
+    context.lineTo(footX + 13, footY - 66);
+    context.stroke();
+    context.lineCap = "butt";
   };
 
   const drawAimLine = () => {
@@ -129,39 +242,67 @@ if (gameCanvas) {
     context.setLineDash([]);
   };
 
-  const drawBall = () => {
-    const gradient = context.createRadialGradient(ball.x - 7, ball.y - 9, 3, ball.x, ball.y, ballRadius);
+  const drawRugbyBall = () => {
+    const angle = Math.atan2(ball.vy, ball.vx || 1) * 0.25;
+    const gradient = context.createRadialGradient(ball.x - 7, ball.y - 8, 3, ball.x, ball.y, ballRadius);
     gradient.addColorStop(0, "#f0d99a");
-    gradient.addColorStop(1, "#d87c2d");
+    gradient.addColorStop(1, "#8f4a24");
 
+    context.save();
+    context.translate(ball.x, ball.y);
+    context.rotate(angle);
     context.fillStyle = gradient;
     context.beginPath();
-    context.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+    context.ellipse(0, 0, ballRadius + 7, ballRadius - 6, 0, 0, Math.PI * 2);
     context.fill();
 
-    context.strokeStyle = "rgba(5, 11, 31, 0.55)";
+    context.strokeStyle = "rgba(5, 11, 31, 0.58)";
     context.lineWidth = 2;
-    context.beginPath();
-    context.moveTo(ball.x - ballRadius, ball.y);
-    context.lineTo(ball.x + ballRadius, ball.y);
-    context.moveTo(ball.x, ball.y - ballRadius);
-    context.lineTo(ball.x, ball.y + ballRadius);
     context.stroke();
+
+    context.strokeStyle = "rgba(245, 240, 230, 0.78)";
+    context.beginPath();
+    context.moveTo(-9, -7);
+    context.lineTo(9, 7);
+    context.moveTo(-2, -5);
+    context.lineTo(4, 1);
+    context.moveTo(-6, 0);
+    context.lineTo(0, 6);
+    context.stroke();
+    context.restore();
   };
 
   const checkScore = () => {
-    const insideHoop =
-      ball.x > hoop.x - hoop.width / 2 &&
-      ball.x < hoop.x + hoop.width / 2 &&
-      ball.y > hoop.y - hoop.height &&
-      ball.y < hoop.y + hoop.height + 8 &&
-      ball.vy > 0;
+    const betweenPosts = ball.x > goal.leftPost + 12 && ball.x < goal.rightPost - 12;
+    const aboveCrossbar = ball.y < goal.crossbarY - 12;
+    const nearGoalLine = ball.x > goal.leftPost - 8 && ball.x < goal.rightPost + 8;
 
-    if (insideHoop && !hasScoredThisThrow) {
+    if (hasKicked && betweenPosts && aboveCrossbar && nearGoalLine && !hasScoredThisThrow) {
       score += 1;
       hasScoredThisThrow = true;
       syncScore();
-      setStatus("Raak. Dat bericht is verzonden.");
+      const jokeIndex = Math.floor(score / 5 - 1) % rugbyJokes.length;
+      setStatus("Tussen de palen.");
+
+      if (score % 5 === 0) {
+        showPopup(rugbyJokes[jokeIndex]);
+      }
+
+      resetRound();
+    }
+  };
+
+  const checkMiss = () => {
+    const ballIsResting = Math.abs(ball.vx) < 0.2 && Math.abs(ball.vy) < 1.3 && ball.y >= pitchGround - ballRadius - 0.5;
+    const passedGoal = ball.x > goal.rightPost + 50;
+
+    if (hasKicked && !hasScoredThisThrow && (ballIsResting || passedGoal)) {
+      hasScoredThisThrow = true;
+      score = 0;
+      syncScore();
+      setStatus("Mis. Score terug naar 0.");
+      showPopup(retryMessage);
+      resetRound();
     }
   };
 
@@ -186,8 +327,8 @@ if (gameCanvas) {
       ball.vx *= -0.65;
     }
 
-    if (ball.y > gameCanvas.height - 60 - ballRadius) {
-      ball.y = gameCanvas.height - 60 - ballRadius;
+    if (ball.y > pitchGround - ballRadius) {
+      ball.y = pitchGround - ballRadius;
       ball.vy *= -0.55;
       ball.vx *= 0.82;
 
@@ -203,13 +344,16 @@ if (gameCanvas) {
     }
 
     checkScore();
+    checkMiss();
   };
 
   const draw = () => {
     updateBall();
-    drawCourt();
+    drawPitch();
+    drawPlayer();
     drawAimLine();
-    drawBall();
+    drawRugbyBall();
+    drawPopup();
     animationId = window.requestAnimationFrame(draw);
   };
 
@@ -226,7 +370,10 @@ if (gameCanvas) {
     ball.vx = 0;
     ball.vy = 0;
     hasScoredThisThrow = false;
-    setStatus("Laat los om te gooien.");
+    window.clearTimeout(roundResetTimer);
+    roundResetTimer = null;
+    popupMessage = "";
+    setStatus("Laat los om te kicken.");
   });
 
   gameCanvas.addEventListener("pointermove", (event) => {
@@ -246,10 +393,11 @@ if (gameCanvas) {
     const pullY = ball.y - dragPoint.y;
     ball.vx = Math.max(-16, Math.min(16, pullX * 0.13));
     ball.vy = Math.max(-18, Math.min(13, pullY * 0.16));
+    hasKicked = true;
     isDragging = false;
     dragPoint = null;
     gameCanvas.releasePointerCapture(event.pointerId);
-    setStatus("Onderweg naar de inbox...");
+    setStatus("De bal vliegt richting de palen...");
   });
 
   gameCanvas.addEventListener("pointercancel", resetBall);

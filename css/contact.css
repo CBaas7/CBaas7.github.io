@@ -66,7 +66,8 @@
 .contact-game__canvas {
   aspect-ratio: 43 / 26;
   background:
-    linear-gradient(180deg, rgba(184, 199, 217, 0.08), rgba(5, 11, 31, 0.36)),
+    linear-gradient(180deg, rgba(184, 199, 217, 0.08), rgba(5, 11, 31, 0.28)),
+    linear-gradient(90deg, rgba(33, 120, 79, 0.3), rgba(15, 82, 68, 0.42)),
     radial-gradient(circle at 18% 22%, rgba(240, 217, 154, 0.18), transparent 9rem),
     #07122e;
   border: 1px solid rgba(184, 199, 217, 0.18);
