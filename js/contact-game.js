@@ -16,7 +16,8 @@ if (gameCanvas) {
   let roundResetTimer = null;
   let animationId = null;
   let popupMessage = "";
-  const scoreStep = 5;
+  const pointsPerKick = 1;
+  const reactionInterval = 5;
   const winningScore = 100;
   const rugbyJokes = [
     "Raak. De palen deden hun werk en stonden vooral in de weg.",
@@ -311,11 +312,11 @@ if (gameCanvas) {
     const nearGoalLine = ball.x > goal.leftPost - 8 && ball.x < goal.rightPost + 8;
 
     if (hasKicked && betweenPosts && aboveCrossbar && nearGoalLine && !hasScoredThisThrow) {
-      score += scoreStep;
+      score += pointsPerKick;
       hasScoredThisThrow = true;
       syncScore();
       setStatus("Tussen de palen.");
-      const jokeIndex = Math.floor(score / scoreStep - 1) % rugbyJokes.length;
+      const jokeIndex = Math.floor(score / reactionInterval - 1) % rugbyJokes.length;
 
       if (score >= winningScore) {
         score = winningScore;
@@ -325,7 +326,10 @@ if (gameCanvas) {
         return;
       }
 
-      showPopup(rugbyJokes[jokeIndex]);
+      if (score > 0 && score % reactionInterval === 0) {
+        showPopup(rugbyJokes[jokeIndex]);
+      }
+
       resetRound();
     }
   };

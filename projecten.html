@@ -27,42 +27,96 @@
       </div>
     </nav>
 
-    <main class="page-shell">
+    <main class="page-shell projects-page">
       <section class="container">
-        <p class="eyebrow">Projecten</p>
-        <h1 class="page-title">Geselecteerd werk.</h1>
-        <!-- Projectkaarten gebruiken visual-one/two/three voor de achtergrondbeelden in css/style.css. -->
-        <div class="row g-4 mt-2">
-          <div class="col-lg-4">
-            <article class="project-card reveal">
-              <div class="project-visual visual-one"></div>
-              <div class="project-body">
-                <span>Website</span>
-                <h2>Luxe portfolio</h2>
-                <p>Een elegante persoonlijke site met Bootstrap-grid, blauwe styling en subtiele animaties.</p>
-              </div>
-            </article>
+        <div class="projects-hero">
+          <div class="projects-hero__copy reveal">
+            <p class="eyebrow">Projecten</p>
+            <h1 class="page-title projects-title">Projecten waar ik trots op ben<span>.</span></h1>
+            <p class="projects-lead">Een selectie van projecten die mijn skills, creativiteit en toewijding laten zien.</p>
+            <a class="projects-scroll" href="#project-list" aria-label="Scroll naar projecten">
+              <span aria-hidden="true">&darr;</span>
+              Scroll om te ontdekken
+            </a>
           </div>
-          <div class="col-lg-4">
-            <article class="project-card reveal">
-              <div class="project-visual visual-two"></div>
-              <div class="project-body">
-                <span>Interface</span>
-                <h2>Dashboard concept</h2>
-                <p>Een overzichtelijke interface voor informatie, filters en snelle acties.</p>
-              </div>
-            </article>
+          <div class="projects-code-panel reveal" aria-hidden="true">
+            <span>function buildProjectCard(project) {</span>
+            <span>&nbsp;&nbsp;const tags = project.stack.map(tag =&gt; tag.name);</span>
+            <span>&nbsp;&nbsp;return {</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;title: project.title,</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;category: project.category,</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;status: "published"</span>
+            <span>&nbsp;&nbsp;};</span>
+            <span>}</span>
           </div>
-          <div class="col-lg-4">
-            <article class="project-card reveal">
-              <div class="project-visual visual-three"></div>
-              <div class="project-body">
-                <span>Branding</span>
-                <h2>Blauwe huisstijl</h2>
-                <p>Een visuele richting met diepe kleuren, goudaccenten en premium typografie.</p>
+        </div>
+
+        <!-- Categorieknoppen: data-project-filter moet overeenkomen met data-project-category op de projectrijen. -->
+        <div class="project-tabs reveal" aria-label="Project categorieen">
+          <button class="project-tab is-active" type="button" data-project-filter="all" aria-pressed="true">Alle</button>
+          <button class="project-tab" type="button" data-project-filter="website" aria-pressed="false">Websites</button>
+          <button class="project-tab" type="button" data-project-filter="app" aria-pressed="false">Apps</button>
+          <button class="project-tab" type="button" data-project-filter="game" aria-pressed="false">Games</button>
+          <button class="project-tab" type="button" data-project-filter="overig" aria-pressed="false">Overig</button>
+        </div>
+
+        <div class="project-list" id="project-list">
+          <!-- Projectrij: wijzig data-project-category als dit project onder een andere tab moet vallen. -->
+          <article class="project-row reveal" data-project-category="website">
+            <div class="project-preview project-preview--quiz" aria-label="Quiz project preview">
+              <img src="img/quiz-prj.png" alt="Preview van het QuizQuest project">
+            </div>
+            <div class="project-row__content">
+              <span class="project-type">Website</span>
+              <h2>Code&Quizz</h2>
+              <p>Een interactieve quiz met vragen, scoretelling en directe feedback voor de gebruiker.</p>
+              <div class="project-tags">
+                <span>JavaScript</span>
+                <span>HTML</span>
+                <span>CSS</span>
               </div>
-            </article>
-          </div>
+            </div>
+            <a class="project-link" href="#" aria-label="Bekijk QuizQuest">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <!-- Tweede websiteproject; wordt zichtbaar bij 'Alle' en 'Websites'. -->
+          <article class="project-row reveal" data-project-category="website">
+            <div class="project-preview project-preview--portfolio" aria-label="Portfolio project preview">
+              <img src="img/portfolio-prj.png" alt="Preview van de portfolio website">
+            </div>
+            <div class="project-row__content">
+              <span class="project-type">Website</span>
+              <h2>Portfolio website</h2>
+              <p>Een persoonlijke portfolio met moderne styling, duidelijke navigatie en responsive pagina's.</p>
+              <div class="project-tags">
+                <span>Bootstrap</span>
+                <span>Responsive Design</span>
+                <span>CSS</span>
+              </div>
+            </div>
+            <a class="project-link" href="#" aria-label="Bekijk Portfolio website">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <!-- Gameproject; wordt zichtbaar bij 'Alle' en 'Games'. -->
+          <article class="project-row reveal" data-project-category="game">
+            <div class="project-preview project-preview--checkers" aria-label="Damspel project preview">
+              <img src="img/dam-prj.png" alt="Preview van het Damspel project">
+            </div>
+            <div class="project-row__content">
+              <span class="project-type">Game</span>
+              <h2>Damspel</h2>
+              <p>Een digitaal damspel met speelbord, zetten en een duidelijke spelervaring voor twee spelers.</p>
+              <div class="project-tags">
+                <span>JavaScript</span>
+                <span>Game Logic</span>
+                <span>CSS</span>
+              </div>
+            </div>
+            <a class="project-link" href="#" aria-label="Bekijk Damspel">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <!-- Lege melding: JavaScript toont deze alleen als een categorie geen projecten heeft. -->
+          <p class="project-empty" aria-live="polite">Voor deze categorie staat nog geen project online.</p>
         </div>
       </section>
     </main>
