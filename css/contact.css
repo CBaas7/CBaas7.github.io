@@ -1,0 +1,98 @@
+.contact-shell {
+  min-height: calc(100svh - 4rem);
+}
+
+.contact-intro {
+  max-width: 34rem;
+}
+
+.contact-note {
+  color: var(--gold-soft);
+  font-size: 0.94rem;
+  margin-top: 1.25rem;
+}
+
+.contact-game {
+  background: linear-gradient(145deg, rgba(5, 11, 31, 0.74), rgba(8, 22, 56, 0.92));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+.contact-game__header {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.contact-game__header h2 {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  letter-spacing: 0;
+  margin: 0 0 0.15rem;
+}
+
+.contact-game__header span,
+.contact-game__status {
+  color: var(--mist);
+  font-size: 0.92rem;
+}
+
+.contact-game__header strong {
+  color: var(--gold-soft);
+}
+
+.contact-game__reset {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  color: var(--blue-950);
+  flex: 0 0 auto;
+  font-weight: 700;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.95rem;
+}
+
+.contact-game__reset:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
+.contact-game__canvas {
+  aspect-ratio: 43 / 26;
+  background:
+    linear-gradient(180deg, rgba(184, 199, 217, 0.08), rgba(5, 11, 31, 0.36)),
+    radial-gradient(circle at 18% 22%, rgba(240, 217, 154, 0.18), transparent 9rem),
+    #07122e;
+  border: 1px solid rgba(184, 199, 217, 0.18);
+  border-radius: 8px;
+  cursor: grab;
+  display: block;
+  max-height: 520px;
+  touch-action: none;
+  width: 100%;
+}
+
+.contact-game__canvas:active {
+  cursor: grabbing;
+}
+
+.contact-game__status {
+  margin: 0.9rem 0 0;
+}
+
+@media (max-width: 575.98px) {
+  .contact-game__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contact-game__reset {
+    width: 100%;
+  }
+}
