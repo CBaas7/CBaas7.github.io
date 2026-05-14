@@ -16,12 +16,35 @@ if (gameCanvas) {
   let roundResetTimer = null;
   let animationId = null;
   let popupMessage = "";
+  const scoreStep = 5;
+  const winningScore = 100;
   const rugbyJokes = [
+    "Raak. De palen deden hun werk en stonden vooral in de weg.",
+    "Score. De bal had eindelijk Google Maps aan.",
+    "Raak. Zelfs de grasmat keek onder de indruk.",
+    "Raak. De palen hebben dit netjes toegelaten.",
+    "Tussen de palen. Verdacht professioneel.",
+    "Perfecte kick. De natuurkunde werkt blijkbaar soms mee.",
+    "Score. De bal had vandaag duidelijk zijn huiswerk gedaan.",
+    "Raak. Zelfs de wind dacht: deze laat ik gaan.",
+    "Score. Iemand bel de scout, maar rustig aan.",
+    "Raak. De bal koos voor karakterontwikkeling.",
+    "Tussen de palen. Dit komt vast door talent, of toeval.",
+    "Score. De palen waren zo vriendelijk om niet te bewegen.",
+    "Perfect. De bal leek even te weten wat de bedoeling was.",
+    "Score. Dat was bijna te netjes voor deze website.",
+    "Raak. De palen hebben officieel akkoord gegeven.",
+    "Tussen de palen. Het publiek in gedachten wordt wild.",
+    "Score. De bal had een zeldzaam moment van focus.",
+    "Raak. Dit wordt later zwaar overdreven naverteld.",
+    "Perfecte kick. De bal mag dit op zijn cv zetten.",
+    "Score. De palen staan er nog van bij te komen.",
     "Rugbyfeitje: de bal stuitert zo raar omdat zelfs hij contact probeert te vermijden.",
     "Waarom nam de rugbyer een ladder mee? Voor een hogere conversie.",
     "Deze kick was zo strak dat zelfs de palen even respectvol stil stonden.",
   ];
-  const retryMessage = "Net naast. Zelfs de bal wil soms eerst warming-up doen.";
+  const retryMessage = "Dat schot had meer ambitie dan richting.";
+  const winningMessage = "Leuk geprobeerd, maar begin maar helemaal opnieuw.";
 
   const pitchGround = gameCanvas.height - 66;
   const ballStart = { x: 155, y: pitchGround - 21 };
@@ -83,6 +106,16 @@ if (gameCanvas) {
     syncScore();
     resetBall();
     setStatus("Sleep de rugbybal naar achteren, richt tussen de palen en laat los.");
+  };
+
+  const resetAfterWin = () => {
+    window.clearTimeout(roundResetTimer);
+    roundResetTimer = window.setTimeout(() => {
+      score = 0;
+      syncScore();
+      resetBall();
+      setStatus("Sleep de rugbybal naar achteren, richt tussen de palen en laat los.");
+    }, 1600);
   };
 
   const getPointerPosition = (event) => {
@@ -278,16 +311,21 @@ if (gameCanvas) {
     const nearGoalLine = ball.x > goal.leftPost - 8 && ball.x < goal.rightPost + 8;
 
     if (hasKicked && betweenPosts && aboveCrossbar && nearGoalLine && !hasScoredThisThrow) {
-      score += 1;
+      score += scoreStep;
       hasScoredThisThrow = true;
       syncScore();
-      const jokeIndex = Math.floor(score / 5 - 1) % rugbyJokes.length;
       setStatus("Tussen de palen.");
+      const jokeIndex = Math.floor(score / scoreStep - 1) % rugbyJokes.length;
 
-      if (score % 5 === 0) {
-        showPopup(rugbyJokes[jokeIndex]);
+      if (score >= winningScore) {
+        score = winningScore;
+        syncScore();
+        showPopup(`${rugbyJokes[jokeIndex]} ${winningMessage}`);
+        resetAfterWin();
+        return;
       }
 
+      showPopup(rugbyJokes[jokeIndex]);
       resetRound();
     }
   };
