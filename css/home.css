@@ -1,0 +1,195 @@
+.hero-section {
+  isolation: isolate;
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 11, 31, 0.9), rgba(8, 22, 56, 0.68) 48%, rgba(5, 11, 31, 0.34)),
+    linear-gradient(180deg, rgba(5, 11, 31, 0.28), rgba(5, 11, 31, 0.9)),
+    url("../img/home-page-header.png") center/cover;
+}
+
+.hero-section::after {
+  background: linear-gradient(180deg, transparent, var(--blue-950));
+  bottom: 0;
+  content: "";
+  height: 9rem;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
+
+.homepage-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-grid {
+  padding-bottom: 5rem;
+  padding-top: 7.5rem;
+}
+
+.hero-copy,
+.profile-panel p {
+  color: var(--muted);
+}
+
+.hero-copy {
+  line-height: 1.65;
+  max-width: 42rem;
+}
+
+.codebar-stack {
+  margin-top: 4.5rem;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+  width: 100%;
+}
+
+.codebar-stack__track {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem clamp(1.2rem, 3.4vw, 2.75rem);
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.85rem 0 0;
+  width: 100%;
+}
+
+.codebar-tech {
+  align-items: center;
+  color: rgba(247, 251, 255, 0.9);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.74rem;
+  gap: 0.46rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.codebar-icon {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 18px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  height: 18px;
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  width: 18px;
+}
+
+.codebar-icon--js {
+  background: #f7df1e;
+  color: #111;
+}
+
+.codebar-icon--html {
+  background: #e34f26;
+  color: #fff;
+}
+
+.codebar-icon--css {
+  background: #1572b6;
+  color: #fff;
+}
+
+.codebar-icon--go {
+  background: #00add8;
+  color: #fff;
+  font-size: 0.54rem;
+}
+
+.codebar-icon--php {
+  background: #777bb4;
+  color: #fff;
+  font-size: 0.47rem;
+}
+
+.codebar-icon--mysql {
+  background: #00618a;
+  color: #fff;
+  font-size: 0.45rem;
+}
+
+.profile-panel {
+  /* Alleen de profielkaart op de homepage. Houd padding en radius stabiel voor nette uitlijning. */
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(24, 58, 122, 0.78), rgba(8, 22, 56, 0.9));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.profile-panel h2 {
+  color: #fff;
+  font-family: var(--font-heading);
+  letter-spacing: 0;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-grid div {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.stat-grid strong {
+  color: var(--gold-soft);
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.stat-grid span {
+  color: var(--mist);
+  font-size: 0.9rem;
+}
+
+.section-band {
+  padding: 7rem 0 4rem;
+}
+
+@media (max-width: 991.98px) {
+  .hero-section .min-vh-100 {
+    min-height: auto !important;
+    padding-bottom: 4rem;
+    padding-top: 8.25rem !important;
+  }
+
+  .homepage-header .col-lg-7 {
+    text-align: center;
+  }
+
+  .hero-copy {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 38rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .display-3 {
+    font-size: 2.55rem;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 31rem;
+  }
+
+  .profile-panel {
+    padding: 1.2rem;
+  }
+}

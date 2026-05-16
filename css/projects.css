@@ -1,0 +1,353 @@
+/* Projectpagina: lijst-layout naar de mockup, los van de gedeelde header en footer. */
+.inner-page .projects-page {
+  background:
+    linear-gradient(180deg, rgba(5, 11, 31, 0.28), var(--blue-950) 26rem),
+    linear-gradient(135deg, var(--blue-950), var(--blue-900) 46%, #030613);
+}
+
+.inner-page .projects-page::before {
+  background:
+    linear-gradient(90deg, rgba(5, 11, 31, 0.9), rgba(8, 22, 56, 0.68) 48%, rgba(5, 11, 31, 0.34)),
+    linear-gradient(180deg, rgba(5, 11, 31, 0.18), rgba(5, 11, 31, 0.72) 72%, var(--blue-950)),
+    url("../img/home-page-header.png") center top/cover;
+  content: "";
+  height: clamp(34rem, 68vw, 48rem);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.projects-page {
+  padding-bottom: 1.5rem;
+}
+
+.projects-hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
+  min-height: 470px;
+  padding: clamp(1rem, 3vw, 2rem) 0 2.75rem;
+}
+
+.projects-hero__copy {
+  max-width: 650px;
+}
+
+.projects-title {
+  max-width: 620px;
+}
+
+.projects-lead {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  margin-top: 1.35rem;
+  max-width: 520px;
+}
+
+.projects-scroll {
+  align-items: center;
+  color: rgba(245, 240, 230, 0.72);
+  display: inline-flex;
+  font-size: 0.76rem;
+  font-weight: 700;
+  gap: 0.8rem;
+  letter-spacing: 0.18em;
+  margin-top: 2rem;
+  text-transform: uppercase;
+}
+
+.projects-scroll:hover {
+  color: var(--gold-soft);
+}
+
+.projects-scroll span {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.hero-img-prj {
+  align-self: center;
+  aspect-ratio: 1672 / 941;
+  background:
+    linear-gradient(145deg, rgba(245, 240, 230, 0.08), rgba(77, 146, 255, 0.06)),
+    rgba(5, 11, 31, 0.48);
+  border: 1px solid rgba(184, 199, 217, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), 0 0 44px rgba(77, 146, 255, 0.12);
+  justify-self: start;
+  max-width: min(100%, 620px);
+  overflow: hidden;
+  padding: clamp(0.38rem, 0.9vw, 0.62rem);
+  position: relative;
+  transform: translate(-1.75rem, 2.35rem);
+  width: 100%;
+}
+
+.hero-img-prj img {
+  border-radius: 6px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-img-prj::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 34%, rgba(77, 146, 255, 0.14));
+  content: "";
+  inset: 0;
+  opacity: 0.62;
+  pointer-events: none;
+  position: absolute;
+}
+
+.hero-img-prj::after {
+  background: linear-gradient(90deg, transparent, rgba(240, 217, 154, 0.65), rgba(77, 146, 255, 0.55), transparent);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 10%;
+  opacity: 0.8;
+  position: absolute;
+  width: 80%;
+}
+
+/* Filtertabs: JavaScript wisselt .is-active en gebruikt data-project-filter. */
+.project-tabs {
+  align-items: center;
+  border-bottom: 1px solid rgba(184, 199, 217, 0.22);
+  display: flex;
+  gap: clamp(1.1rem, 4vw, 3rem);
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.project-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.project-tab {
+  background: transparent;
+  border: 0;
+  color: rgba(245, 240, 230, 0.78);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  padding: 1rem 0 1.05rem;
+  position: relative;
+}
+
+.project-tab:hover,
+.project-tab.is-active {
+  color: var(--gold-soft);
+}
+
+.project-tab.is-active::after {
+  background: var(--gold);
+  bottom: -1px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.project-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.15rem;
+}
+
+/* Projectrijen worden door JS verborgen met .is-hidden wanneer een categorie niet matcht. */
+.project-row {
+  align-items: center;
+  background: linear-gradient(145deg, rgba(8, 22, 56, 0.78), rgba(5, 11, 31, 0.82));
+  border: 1px solid rgba(184, 199, 217, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: clamp(1.15rem, 3vw, 2rem);
+  grid-template-columns: minmax(220px, 370px) minmax(0, 1fr) auto;
+  min-height: 174px;
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
+}
+
+.project-row.is-hidden {
+  display: none;
+}
+
+.project-preview {
+  align-items: center;
+  aspect-ratio: 16 / 8.4;
+  background: #050816;
+  border: 1px solid rgba(184, 199, 217, 0.22);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.project-preview--quiz {
+  background: #070b1f;
+  padding: 0;
+}
+
+.project-preview--quiz img,
+.project-preview--portfolio img,
+.project-preview--checkers img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.project-preview--portfolio {
+  background: #070b1f;
+  padding: 0;
+}
+
+.project-preview--checkers {
+  background: #070b1f;
+  padding: 0;
+}
+
+.project-row__content {
+  min-width: 0;
+}
+
+.project-type {
+  color: var(--gold-soft);
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.project-row h2 {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  letter-spacing: 0;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.project-row p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 520px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.project-tags span {
+  background: rgba(184, 199, 217, 0.1);
+  border: 1px solid rgba(184, 199, 217, 0.08);
+  border-radius: 5px;
+  color: rgba(245, 240, 230, 0.84);
+  font-size: 0.78rem;
+  line-height: 1;
+  padding: 0.55rem 0.75rem;
+}
+
+.project-link {
+  align-items: center;
+  color: var(--gold-soft);
+  display: inline-flex;
+  gap: 0.7rem;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.project-link:hover {
+  color: #fff;
+}
+
+/* Wordt pas zichtbaar als een filter geen projecten oplevert. */
+.project-empty {
+  background: rgba(8, 22, 56, 0.56);
+  border: 1px solid rgba(184, 199, 217, 0.16);
+  border-radius: 8px;
+  color: var(--muted);
+  display: none;
+  margin: 0;
+  padding: 1.4rem;
+  text-align: center;
+}
+
+.project-empty.is-visible {
+  display: block;
+}
+
+@media (max-width: 991.98px) {
+  .projects-hero {
+    gap: 2.25rem;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-img-prj {
+    justify-self: center;
+    max-width: 680px;
+    transform: none;
+  }
+
+  .project-row {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-link {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .projects-title {
+    font-size: 2.7rem;
+  }
+
+  .hero-img-prj {
+    max-width: 100%;
+    padding: 0.35rem;
+  }
+
+  .project-tabs {
+    gap: 1.5rem;
+  }
+
+  .project-row {
+    padding: 0.7rem;
+  }
+
+  .project-preview {
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-row__content {
+    padding: 0 0.25rem;
+  }
+
+  .project-link {
+    padding: 0 0.25rem 0.25rem;
+  }
+}
