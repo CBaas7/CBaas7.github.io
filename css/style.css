@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 :root {
   /* Kleurvariabelen sturen de hele site; wijzig ze hier om de huisstijl consistent te houden. */
+  --font-primary: "Inter", Arial, Helvetica, sans-serif;
+  --font-heading: "Inter", Arial, Helvetica, sans-serif;
   --blue-950: #050b1f;
   --blue-900: #081638;
   --blue-800: #10275a;
@@ -22,7 +26,7 @@ body {
   background:
     radial-gradient(circle at 20% 10%, rgba(216, 183, 106, 0.12), transparent 28rem),
     linear-gradient(135deg, var(--blue-950), var(--blue-900) 46%, #030613);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
   min-height: 100vh;
 }
 
@@ -52,7 +56,7 @@ a {
 
 .brand-mark {
   color: var(--gold-soft);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: 1.45rem;
   letter-spacing: 0;
 }
@@ -227,7 +231,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 999px;
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: 0.7rem;
 }
 
@@ -294,8 +298,7 @@ a {
 
 .profile-panel,
 .lux-card,
-.tool-panel,
-.stat-tile {
+.tool-panel {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
@@ -317,7 +320,7 @@ a {
 .lux-card h2,
 .skills-title {
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   letter-spacing: 0;
 }
 
@@ -390,7 +393,7 @@ a {
 
 .page-title {
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.3rem, 5vw, 4.8rem);
   letter-spacing: 0;
   line-height: 1.02;
@@ -472,8 +475,223 @@ a {
   color: #fff;
 }
 
-.tool-panel,
-.stat-tile {
+.practice-panel {
+  padding: 0;
+  position: relative;
+}
+
+.practice-panel::before {
+  background:
+    linear-gradient(90deg, transparent, rgba(240, 217, 154, 0.5), rgba(0, 173, 216, 0.38), transparent),
+    linear-gradient(90deg, transparent, rgba(227, 79, 38, 0.38), rgba(240, 217, 154, 0.28), transparent);
+  content: "";
+  height: 1px;
+  left: 7%;
+  opacity: 0.7;
+  pointer-events: none;
+  position: absolute;
+  top: 58%;
+  width: 86%;
+}
+
+.practice-panel::after {
+  background:
+    radial-gradient(circle at 12% 34%, rgba(227, 79, 38, 0.16), transparent 8rem),
+    radial-gradient(circle at 78% 22%, rgba(240, 217, 154, 0.14), transparent 9rem),
+    radial-gradient(circle at 78% 84%, rgba(0, 173, 216, 0.13), transparent 9rem);
+  content: "";
+  inset: 0;
+  opacity: 0.82;
+  pointer-events: none;
+  position: absolute;
+}
+
+.practice-heading {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.05rem;
+  position: relative;
+  z-index: 1;
+}
+
+.practice-heading::after {
+  background: linear-gradient(90deg, rgba(240, 217, 154, 0.5), transparent);
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+.practice-heading h2 {
+  color: var(--gold-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.practice-lines {
+  inset: 2.65rem 0 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.practice-line {
+  background: linear-gradient(90deg, transparent, rgba(240, 217, 154, 0.5), rgba(0, 173, 216, 0.42), transparent);
+  box-shadow: 0 0 14px rgba(0, 173, 216, 0.12);
+  display: block;
+  opacity: 0.64;
+  position: absolute;
+}
+
+.practice-line--top,
+.practice-line--middle,
+.practice-line--bottom {
+  height: 1px;
+}
+
+.practice-line--top {
+  left: 7%;
+  top: 37%;
+  width: 86%;
+}
+
+.practice-line--middle {
+  left: 16%;
+  top: 58%;
+  width: 68%;
+}
+
+.practice-line--bottom {
+  left: 26%;
+  top: 78%;
+  width: 48%;
+}
+
+.practice-line--html,
+.practice-line--css,
+.practice-line--js,
+.practice-line--bootstrap,
+.practice-line--php,
+.practice-line--go,
+.practice-line--mysql {
+  background: linear-gradient(180deg, rgba(240, 217, 154, 0.42), rgba(0, 173, 216, 0.38), transparent);
+  height: 26%;
+  top: 38%;
+  width: 1px;
+}
+
+.practice-line--html { left: 11.5%; }
+.practice-line--css { left: 36.5%; }
+.practice-line--js { left: 61.5%; }
+.practice-line--bootstrap { left: 86.5%; }
+.practice-line--php { left: 24%; top: 58%; height: 20%; }
+.practice-line--go { left: 50%; top: 58%; height: 20%; }
+.practice-line--mysql { left: 76%; top: 58%; height: 20%; }
+
+.practice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.practice-card {
+  --practice-accent: #7d5cff;
+  --practice-border: rgba(125, 92, 255, 0.58);
+  --practice-glow: rgba(125, 92, 255, 0.22);
+  --practice-glow-active: rgba(125, 92, 255, 0.42);
+  align-items: center;
+  background: linear-gradient(145deg, rgba(5, 11, 31, 0.68), rgba(8, 22, 56, 0.74));
+  border: 1px solid var(--practice-border);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 22px var(--practice-glow), 0 12px 32px rgba(0, 0, 0, 0.16);
+  animation: practice-card-pulse 8.4s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 calc((100% - 3rem) / 4);
+  justify-content: center;
+  min-height: 122px;
+  min-width: 0;
+  padding: 0.9rem 0.7rem;
+  text-align: center;
+}
+
+.practice-card:nth-child(1) { animation-delay: 0s; }
+.practice-card:nth-child(2) { animation-delay: 1.2s; }
+.practice-card:nth-child(3) { animation-delay: 2.4s; }
+.practice-card:nth-child(4) { animation-delay: 3.6s; }
+.practice-card:nth-child(5) { animation-delay: 4.8s; }
+.practice-card:nth-child(6) { animation-delay: 6s; }
+.practice-card:nth-child(7) { animation-delay: 7.2s; }
+
+@keyframes practice-card-pulse {
+  0%,
+  13%,
+  100% {
+    border-color: var(--practice-border);
+    box-shadow: inset 0 0 22px var(--practice-glow), 0 12px 32px rgba(0, 0, 0, 0.16);
+    transform: translateY(0);
+  }
+
+  6% {
+    border-color: var(--practice-border-active);
+    box-shadow: inset 0 0 42px var(--practice-glow-active), 0 0 34px var(--practice-glow-active), 0 18px 42px rgba(0, 0, 0, 0.24);
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .practice-card {
+    animation: none;
+  }
+}
+
+.practice-icon {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 800;
+  height: 38px;
+  justify-content: center;
+  margin-bottom: 0.58rem;
+  width: 38px;
+}
+
+.practice-card h3 {
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.practice-card p {
+  color: rgba(245, 240, 230, 0.82);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.practice-card--html { --practice-border: rgba(227, 79, 38, 0.64); --practice-border-active: rgba(255, 115, 72, 0.96); --practice-glow: rgba(227, 79, 38, 0.2); --practice-glow-active: rgba(227, 79, 38, 0.42); }
+.practice-card--css { --practice-border: rgba(21, 114, 182, 0.7); --practice-border-active: rgba(55, 165, 255, 0.96); --practice-glow: rgba(21, 114, 182, 0.22); --practice-glow-active: rgba(21, 114, 182, 0.46); }
+.practice-card--js { --practice-border: rgba(247, 223, 30, 0.64); --practice-border-active: rgba(255, 230, 54, 0.96); --practice-glow: rgba(247, 223, 30, 0.18); --practice-glow-active: rgba(247, 223, 30, 0.4); }
+.practice-card--bootstrap { --practice-border: rgba(125, 92, 255, 0.7); --practice-border-active: rgba(160, 132, 255, 0.96); --practice-glow: rgba(125, 92, 255, 0.22); --practice-glow-active: rgba(125, 92, 255, 0.48); }
+.practice-card--php { --practice-border: rgba(119, 123, 180, 0.7); --practice-border-active: rgba(166, 171, 235, 0.96); --practice-glow: rgba(119, 123, 180, 0.22); --practice-glow-active: rgba(119, 123, 180, 0.46); }
+.practice-card--go { --practice-border: rgba(0, 173, 216, 0.7); --practice-border-active: rgba(64, 220, 255, 0.96); --practice-glow: rgba(0, 173, 216, 0.2); --practice-glow-active: rgba(0, 173, 216, 0.44); }
+.practice-card--mysql { --practice-border: rgba(227, 79, 38, 0.64); --practice-border-active: rgba(255, 115, 72, 0.96); --practice-glow: rgba(227, 79, 38, 0.2); --practice-glow-active: rgba(227, 79, 38, 0.42); }
+
+.practice-card--bootstrap .practice-icon {
+  background: #7d5cff;
+  color: #fff;
+}
+
+.tool-panel {
   background: linear-gradient(145deg, rgba(5, 11, 31, 0.7), rgba(8, 22, 56, 0.88));
   border: 1px solid rgba(184, 199, 217, 0.16);
   border-radius: 8px;
@@ -621,51 +839,66 @@ a {
   width: 0.55rem;
 }
 
-.stats-row {
-  margin-top: 1.45rem;
-}
-
-.stat-tile {
-  align-items: center;
-  display: flex;
-  gap: 1rem;
-  height: 100%;
-  padding: 1.25rem;
-}
-
-.stat-icon {
-  align-items: center;
-  background: rgba(125, 92, 255, 0.2);
-  border: 1px solid rgba(125, 92, 255, 0.32);
+.workflow-strip {
+  background:
+    linear-gradient(90deg, rgba(240, 217, 154, 0.12), rgba(0, 173, 216, 0.08), rgba(240, 217, 154, 0.1)),
+    rgba(5, 11, 31, 0.42);
+  border: 1px solid rgba(240, 217, 154, 0.18);
   border-radius: 8px;
-  color: #a996ff;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.45rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.workflow-strip::before {
+  background: linear-gradient(90deg, var(--gold-soft), rgba(0, 173, 216, 0.72), var(--gold-soft));
+  content: "";
+  height: 2px;
+  left: 0;
+  opacity: 0.7;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.workflow-step {
+  align-items: flex-start;
   display: flex;
-  flex: 0 0 46px;
-  font-size: 1.4rem;
-  height: 46px;
-  justify-content: center;
+  gap: 0.95rem;
+  min-height: 126px;
+  padding: 1.35rem 1.3rem 1.25rem;
 }
 
-.stat-number {
-  color: #fff;
-  display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2rem;
+.workflow-step + .workflow-step {
+  border-left: 1px solid rgba(184, 199, 217, 0.12);
+}
+
+.workflow-marker {
+  color: var(--gold-soft);
+  flex: 0 0 auto;
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
   line-height: 1;
+  padding-top: 0.2rem;
 }
 
-.stat-label {
+.workflow-title {
   color: #fff;
   display: block;
-  font-size: 0.92rem;
-  margin-top: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  line-height: 1.15;
 }
 
-.stat-note {
+.workflow-copy {
   color: var(--mist);
   display: block;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  margin-top: 0.45rem;
 }
 
 /* Projectpagina: lijst-layout naar de mockup, los van de gedeelde header en footer. */
@@ -697,10 +930,14 @@ a {
 .projects-hero {
   align-items: center;
   display: grid;
-  gap: clamp(2rem, 7vw, 6rem);
-  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
-  min-height: 430px;
-  padding-bottom: 2rem;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
+  min-height: 470px;
+  padding: clamp(1rem, 3vw, 2rem) 0 2.75rem;
+}
+
+.projects-hero__copy {
+  max-width: 650px;
 }
 
 .projects-title {
@@ -741,20 +978,53 @@ a {
   line-height: 1;
 }
 
-.projects-code-panel {
+.hero-img-prj {
+  align-self: center;
+  aspect-ratio: 1672 / 941;
   background:
-    linear-gradient(90deg, rgba(5, 11, 31, 0.85), rgba(8, 22, 56, 0.16)),
-    repeating-linear-gradient(180deg, rgba(125, 92, 255, 0.12) 0 1px, transparent 1px 22px);
-  border-left: 1px solid rgba(125, 92, 255, 0.2);
-  color: rgba(77, 146, 255, 0.28);
-  display: grid;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: clamp(0.7rem, 1.2vw, 0.86rem);
-  gap: 0.42rem;
-  justify-self: stretch;
-  line-height: 1.45;
-  min-height: 280px;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
+    linear-gradient(145deg, rgba(245, 240, 230, 0.08), rgba(77, 146, 255, 0.06)),
+    rgba(5, 11, 31, 0.48);
+  border: 1px solid rgba(184, 199, 217, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), 0 0 44px rgba(77, 146, 255, 0.12);
+  justify-self: start;
+  max-width: min(100%, 620px);
+  overflow: hidden;
+  padding: clamp(0.38rem, 0.9vw, 0.62rem);
+  position: relative;
+  transform: translate(-1.75rem, 2.35rem);
+  width: 100%;
+}
+
+.hero-img-prj img {
+  border-radius: 6px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-img-prj::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 34%, rgba(77, 146, 255, 0.14));
+  content: "";
+  inset: 0;
+  opacity: 0.62;
+  pointer-events: none;
+  position: absolute;
+}
+
+.hero-img-prj::after {
+  background: linear-gradient(90deg, transparent, rgba(240, 217, 154, 0.65), rgba(77, 146, 255, 0.55), transparent);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 10%;
+  opacity: 0.8;
+  position: absolute;
+  width: 80%;
 }
 
 /* Filtertabs: JavaScript wisselt .is-active en gebruikt data-project-filter. */
@@ -874,7 +1144,7 @@ a {
 
 .project-row h2 {
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.4vw, 2rem);
   letter-spacing: 0;
   line-height: 1.05;
@@ -958,7 +1228,7 @@ a {
 .footer-logo {
   color: var(--gold-soft);
   display: inline-flex;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   line-height: 1.2;
   margin-bottom: 0.75rem;
@@ -1072,8 +1342,29 @@ a {
     padding-top: 8rem;
   }
 
+  .skills-intro {
+    max-width: 620px;
+  }
+
+  .practice-panel {
+    margin-top: 0.5rem;
+  }
+
   .tool-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .workflow-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-step {
+    min-height: auto;
+  }
+
+  .workflow-step + .workflow-step {
+    border-left: 0;
+    border-top: 1px solid rgba(184, 199, 217, 0.12);
   }
 
   .tool-item:nth-child(4n) {
@@ -1081,14 +1372,16 @@ a {
   }
 
   .projects-hero {
-    gap: 2rem;
+    gap: 2.25rem;
     grid-template-columns: 1fr;
     min-height: auto;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
   }
 
-  .projects-code-panel {
-    min-height: 220px;
+  .hero-img-prj {
+    justify-self: center;
+    max-width: 680px;
+    transform: none;
   }
 
   .project-row {
@@ -1121,8 +1414,9 @@ a {
     font-size: 2.7rem;
   }
 
-  .projects-code-panel {
-    display: none;
+  .hero-img-prj {
+    max-width: 100%;
+    padding: 0.35rem;
   }
 
   .project-tabs {
@@ -1148,6 +1442,32 @@ a {
   .skills-cta {
     justify-content: center;
     width: 100%;
+  }
+
+  .practice-panel {
+    padding: 0;
+  }
+
+  .practice-heading {
+    align-items: flex-start;
+  }
+
+  .practice-grid {
+    gap: 0.75rem;
+  }
+
+  .practice-lines {
+    display: none;
+  }
+
+  .practice-card {
+    flex-basis: calc((100% - 0.75rem) / 2);
+    min-height: 118px;
+    padding: 0.8rem 0.6rem;
+  }
+
+  .practice-card p {
+    font-size: 0.75rem;
   }
 
   .tool-tabs {
