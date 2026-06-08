@@ -31,8 +31,8 @@
 
     <main class="page-shell projects-page">
       <section class="container">
-        <div class="projects-hero">
-          <div class="projects-hero__copy reveal">
+        <div class="projects-hero row align-items-center gx-0 gy-5 gx-lg-5 m-0">
+          <div class="projects-hero__copy col-12 col-lg-5 reveal">
             <p class="eyebrow">Projecten</p>
             <h1 class="page-title projects-title">Projecten waar ik trots op ben</h1>
             <p class="projects-lead">Een selectie van projecten die mijn skills, creativiteit en toewijding laten zien.</p>
@@ -41,13 +41,15 @@
               Scroll om te ontdekken
             </a>
           </div>
-          <div class="hero-img-prj reveal">
-            <img src="img/here-img-prj.png" alt="Van code naar het resultaat van een interactief damspel">
+          <div class="col-12 col-lg-7">
+            <div class="hero-img-prj reveal">
+              <img src="img/here-img-prj.png" alt="Van code naar het resultaat van een interactief damspel">
+            </div>
           </div>
         </div>
 
         <!-- Categorieknoppen: data-project-filter moet overeenkomen met data-project-category op de projectrijen. -->
-        <div class="project-tabs reveal" aria-label="Project categorieen">
+        <div class="project-tabs reveal d-flex align-items-center overflow-auto" aria-label="Project categorieen">
           <button class="project-tab is-active" type="button" data-project-filter="all" aria-pressed="true">Alle</button>
           <button class="project-tab" type="button" data-project-filter="website" aria-pressed="false">Websites</button>
           <button class="project-tab" type="button" data-project-filter="app" aria-pressed="false">Apps</button>
@@ -55,13 +57,13 @@
           <button class="project-tab" type="button" data-project-filter="overig" aria-pressed="false">Overig</button>
         </div>
 
-        <div class="project-list" id="project-list">
+        <div class="project-list d-grid" id="project-list">
           <!-- Projectrij: wijzig data-project-category als dit project onder een andere tab moet vallen. -->
-          <article class="project-row reveal" data-project-category="website">
-            <div class="project-preview project-preview--quiz" aria-label="Quiz project preview">
+          <article class="project-row reveal row align-items-center gx-0 gy-4 gx-lg-4 m-0" data-project-category="website">
+            <div class="project-preview project-preview--quiz col-12 col-lg-4" aria-label="Quiz project preview">
               <img src="img/quiz-prj.png" alt="Preview van het Code&Quizz project">
             </div>
-            <div class="project-row__content">
+            <div class="project-row__content col-12 col-lg">
               <span class="project-type">Website</span>
               <h2>Code&Quizz</h2>
               <p>Een interactieve quiz met vragen, scoretelling en directe feedback voor de gebruiker.</p>
@@ -71,15 +73,15 @@
                 <span>CSS</span>
               </div>
             </div>
-            <a class="project-link" href="projecten/quiz-proj.html" aria-label="Bekijk Code&Quizz">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+            <a class="project-link col-12 col-lg-auto" href="projecten/quiz-proj.html" aria-label="Bekijk Code&Quizz">Bekijk project <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Tweede websiteproject; wordt zichtbaar bij 'Alle' en 'Websites'. -->
-          <article class="project-row reveal" data-project-category="website">
-            <div class="project-preview project-preview--portfolio" aria-label="Portfolio project preview">
+          <article class="project-row reveal row align-items-center gx-0 gy-4 gx-lg-4 m-0" data-project-category="website">
+            <div class="project-preview project-preview--portfolio col-12 col-lg-4" aria-label="Portfolio project preview">
               <img src="img/portfolio-prj.png" alt="Preview van de portfolio website">
             </div>
-            <div class="project-row__content">
+            <div class="project-row__content col-12 col-lg">
               <span class="project-type">Website</span>
               <h2>Portfolio website</h2>
               <p>Een persoonlijke portfolio met moderne styling, duidelijke navigatie en responsive pagina's.</p>
@@ -89,15 +91,15 @@
                 <span>CSS</span>
               </div>
             </div>
-            <a class="project-link" href="projecten/portfolio-proj.html" aria-label="Bekijk Portfolio website">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+            <a class="project-link col-12 col-lg-auto" href="projecten/portfolio-proj.html" aria-label="Bekijk Portfolio website">Bekijk project <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Gameproject; wordt zichtbaar bij 'Alle' en 'Games'. -->
-          <article class="project-row reveal" data-project-category="game">
-            <div class="project-preview project-preview--checkers" aria-label="Damspel project preview">
+          <article class="project-row reveal row align-items-center gx-0 gy-4 gx-lg-4 m-0" data-project-category="game">
+            <div class="project-preview project-preview--checkers col-12 col-lg-4" aria-label="Damspel project preview">
               <img src="img/dam-prj.png" alt="Preview van het Damspel project">
             </div>
-            <div class="project-row__content">
+            <div class="project-row__content col-12 col-lg">
               <span class="project-type">Game</span>
               <h2>Damspel</h2>
               <p>Een digitaal damspel met speelbord, zetten en een duidelijke spelervaring voor twee spelers.</p>
@@ -107,7 +109,7 @@
                 <span>CSS</span>
               </div>
             </div>
-            <a class="project-link" href="projecten/dam-proj.html" aria-label="Bekijk Damspel">Bekijk project <span aria-hidden="true">&rarr;</span></a>
+            <a class="project-link col-12 col-lg-auto" href="projecten/dam-proj.html" aria-label="Bekijk Damspel">Bekijk project <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Lege melding: JavaScript toont deze alleen als een categorie geen projecten heeft. -->
@@ -119,8 +121,8 @@
     <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
+        <div class="footer-grid row align-items-start g-4">
+          <div class="footer-brand col-lg">
             <a class="footer-logo" href="index.html">Calvin Baas</a>
             <div class="footer-signature" aria-label="Focuspunten">
               <span>Design</span>
@@ -128,21 +130,21 @@
               <span>Gebruiksgemak</span>
             </div>
           </div>
-          <div class="footer-links">
-            <nav class="footer-nav" aria-label="Footer navigatie">
+          <div class="footer-links col-lg-auto row row-cols-2 g-4 justify-content-lg-end">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Footer navigatie">
               <a href="index.html">Home</a>
               <a href="about.html">About</a>
               <a href="skills.html">Skills</a>
               <a href="projecten.html">Projecten</a>
               <a href="contact.html">Contact</a>
             </nav>
-            <nav class="footer-nav" aria-label="Professionele links">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Professionele links">
               <a href="#" target="_blank" rel="noopener">GitHub</a>
               <a href="#" target="_blank" rel="noopener">CV</a>
             </nav>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 text-center text-sm-start">
           <span>&copy; 2026 Calvin Baas</span>
           <span>Portfolio website</span>
         </div>

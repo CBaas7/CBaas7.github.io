@@ -43,12 +43,12 @@
 
           <div class="col-lg-7">
             <section class="contact-game reveal" aria-labelledby="game-title">
-              <div class="contact-game__header">
+              <div class="contact-game__header d-flex align-items-center justify-content-between gap-3">
                 <div>
                   <h2 id="game-title">Rugby kick</h2>
                   <span>Score: <strong data-game-score>0</strong></span>
                 </div>
-                <button class="contact-game__reset" type="button" data-game-reset>Reset</button>
+                <button class="contact-game__reset btn btn-gold" type="button" data-game-reset>Reset</button>
               </div>
               <canvas class="contact-game__canvas" width="860" height="520" data-contact-game aria-label="Rugbyspel: kick de bal tussen de palen"></canvas>
               <p class="contact-game__status" data-game-status>Sleep de rugbybal naar achteren, richt tussen de palen en laat los.</p>
@@ -61,8 +61,8 @@
     <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
+        <div class="footer-grid row align-items-start g-4">
+          <div class="footer-brand col-lg">
             <a class="footer-logo" href="index.html">Calvin Baas</a>
             <div class="footer-signature" aria-label="Focuspunten">
               <span>Design</span>
@@ -70,21 +70,21 @@
               <span>Gebruiksgemak</span>
             </div>
           </div>
-          <div class="footer-links">
-            <nav class="footer-nav" aria-label="Footer navigatie">
+          <div class="footer-links col-lg-auto row row-cols-2 g-4 justify-content-lg-end">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Footer navigatie">
               <a href="index.html">Home</a>
               <a href="about.html">About</a>
               <a href="skills.html">Skills</a>
               <a href="projecten.html">Projecten</a>
               <a href="contact.html">Contact</a>
             </nav>
-            <nav class="footer-nav" aria-label="Professionele links">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Professionele links">
               <a href="#" target="_blank" rel="noopener">GitHub</a>
               <a href="#" target="_blank" rel="noopener">CV</a>
             </nav>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 text-center text-sm-start">
           <span>&copy; 2026 Calvin Baas</span>
           <span>Portfolio website</span>
         </div>

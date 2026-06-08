@@ -25,10 +25,6 @@
 }
 
 .projects-hero {
-  align-items: center;
-  display: grid;
-  gap: clamp(2.5rem, 6vw, 5.5rem);
-  grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
   min-height: 470px;
   padding: clamp(1rem, 3vw, 2rem) 0 2.75rem;
 }
@@ -80,7 +76,6 @@
   border: 1px solid rgba(184, 199, 217, 0.22);
   border-radius: 8px;
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), 0 0 44px rgba(77, 146, 255, 0.12);
-  justify-self: start;
   max-width: min(100%, 620px);
   overflow: hidden;
   padding: clamp(0.38rem, 0.9vw, 0.62rem);
@@ -122,12 +117,9 @@
 
 /* Filtertabs: JavaScript wisselt .is-active en gebruikt data-project-filter. */
 .project-tabs {
-  align-items: center;
   border-bottom: 1px solid rgba(184, 199, 217, 0.22);
-  display: flex;
   gap: clamp(1.1rem, 4vw, 3rem);
   margin-top: 0.5rem;
-  overflow-x: auto;
   scrollbar-width: none;
 }
 
@@ -162,20 +154,15 @@
 }
 
 .project-list {
-  display: grid;
   gap: 0.6rem;
   margin-top: 1.15rem;
 }
 
 /* Projectrijen worden door JS verborgen met .is-hidden wanneer een categorie niet matcht. */
 .project-row {
-  align-items: center;
   background: linear-gradient(145deg, rgba(8, 22, 56, 0.78), rgba(5, 11, 31, 0.82));
   border: 1px solid rgba(184, 199, 217, 0.16);
-  border-radius: 8px;
-  display: grid;
-  gap: clamp(1.15rem, 3vw, 2rem);
-  grid-template-columns: minmax(220px, 370px) minmax(0, 1fr) auto;
+  border-radius: var(--radius-soft);
   min-height: 174px;
   padding: clamp(0.75rem, 1.8vw, 1.1rem);
 }
@@ -189,7 +176,7 @@
   aspect-ratio: 16 / 8.4;
   background: #050816;
   border: 1px solid rgba(184, 199, 217, 0.22);
-  border-radius: 8px;
+  border-radius: var(--radius-soft);
   display: flex;
   justify-content: center;
   min-width: 0;
@@ -285,7 +272,7 @@
 .project-empty {
   background: rgba(8, 22, 56, 0.56);
   border: 1px solid rgba(184, 199, 217, 0.16);
-  border-radius: 8px;
+  border-radius: var(--radius-soft);
   color: var(--muted);
   display: none;
   margin: 0;
@@ -299,25 +286,19 @@
 
 @media (max-width: 991.98px) {
   .projects-hero {
-    gap: 2.25rem;
-    grid-template-columns: 1fr;
     min-height: auto;
     padding-bottom: 1.5rem;
   }
 
   .hero-img-prj {
-    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 680px;
     transform: none;
   }
 
-  .project-row {
-    align-items: start;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .project-link {
-    justify-self: start;
+    width: fit-content;
   }
 }
 

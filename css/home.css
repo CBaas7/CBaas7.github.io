@@ -50,11 +50,7 @@
 }
 
 .codebar-stack__track {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
   gap: 1rem clamp(1.2rem, 3.4vw, 2.75rem);
-  justify-content: center;
   min-height: 34px;
   padding: 0.85rem 0 0;
   width: 100%;
@@ -120,9 +116,9 @@
 .profile-panel {
   /* Alleen de profielkaart op de homepage. Houd padding en radius stabiel voor nette uitlijning. */
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(24, 58, 122, 0.78), rgba(8, 22, 56, 0.9));
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  border-radius: 8px;
+  background: var(--panel-bg);
+  box-shadow: var(--panel-shadow);
+  border-radius: var(--radius-soft);
   padding: 2rem;
 }
 
@@ -133,10 +129,8 @@
 }
 
 .stat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
 }
 
 .stat-grid div {
@@ -167,13 +161,7 @@
     padding-top: 8.25rem !important;
   }
 
-  .homepage-header .col-lg-7 {
-    text-align: center;
-  }
-
   .hero-copy {
-    margin-left: auto;
-    margin-right: auto;
     max-width: 38rem;
   }
 }

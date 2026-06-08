@@ -30,7 +30,7 @@
 
     <main class="page-shell project-detail-page">
       <div class="container">
-        <a class="project-back-link" href="../projecten.html"><span aria-hidden="true">&larr;</span> Terug naar alle projecten</a>
+        <a class="project-back-link d-inline-flex align-items-center gap-2" href="../projecten.html"><span aria-hidden="true">&larr;</span> Terug naar alle projecten</a>
 
         <header class="project-detail-hero">
           <div class="project-detail-intro reveal">
@@ -39,7 +39,7 @@
             <p class="project-detail-lead">Mijn persoonlijke portfolio waarin ik laat zien wie ik ben, welke technieken ik beheers en aan welke projecten ik tijdens mijn opleiding heb gewerkt.</p>
           </div>
           <figure class="project-detail-media reveal">
-            <img src="../img/portfolio-prj.png" alt="Desktopweergave van de donkerblauwe portfoliohomepage van Calvin Baas">
+            <img class="img-fluid" src="../img/portfolio-prj.png" alt="Desktopweergave van de donkerblauwe portfoliohomepage van Calvin Baas">
             <figcaption>Weergave van de huidige portfoliohomepage.</figcaption>
           </figure>
         </header>
@@ -143,7 +143,7 @@
             <p class="panel-kicker">Bekijken</p>
             <h2>Projectlinks</h2>
             <p>De definitieve links zijn nog niet toegevoegd. Onderstaande knoppen zijn tijdelijke placeholders.</p>
-            <div class="project-actions">
+            <div class="project-actions d-flex flex-column flex-sm-row flex-wrap gap-3">
               <a class="btn btn-gold project-placeholder-link" href="#" aria-label="Tijdelijke placeholder voor de live portfolio website">Live project volgt</a>
               <a class="btn btn-outline-light project-placeholder-link" href="#" aria-label="Tijdelijke placeholder voor de GitHub-repository van de portfolio website">GitHub volgt</a>
             </div>
@@ -165,8 +165,8 @@
 
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
+        <div class="footer-grid row align-items-start g-4">
+          <div class="footer-brand col-lg">
             <a class="footer-logo" href="../index.html">Calvin Baas</a>
             <div class="footer-signature" aria-label="Focuspunten">
               <span>Design</span>
@@ -174,21 +174,21 @@
               <span>Gebruiksgemak</span>
             </div>
           </div>
-          <div class="footer-links">
-            <nav class="footer-nav" aria-label="Footer navigatie">
+          <div class="footer-links col-lg-auto row row-cols-2 g-4 justify-content-lg-end">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Footer navigatie">
               <a href="../index.html">Home</a>
               <a href="../about.html">About</a>
               <a href="../skills.html">Skills</a>
               <a href="../projecten.html">Projecten</a>
               <a href="../contact.html">Contact</a>
             </nav>
-            <nav class="footer-nav" aria-label="Professionele links">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Professionele links">
               <a href="#" target="_blank" rel="noopener">GitHub</a>
               <a href="#" target="_blank" rel="noopener">CV</a>
             </nav>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 text-center text-sm-start">
           <span>&copy; 2026 Calvin Baas</span>
           <span>Portfolio website</span>
         </div>

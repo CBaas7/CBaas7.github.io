@@ -61,7 +61,7 @@
                 <span class="practice-line practice-line--go"></span>
                 <span class="practice-line practice-line--mysql"></span>
               </div>
-              <div class="practice-grid" aria-label="Toepassing van skills">
+              <div class="practice-grid d-flex flex-wrap justify-content-center" aria-label="Toepassing van skills">
                 <article class="practice-card practice-card--html">
                   <span class="practice-icon icon-html" aria-hidden="true">5</span>
                   <h3>HTML</h3>
@@ -107,7 +107,7 @@
           <p class="panel-copy">Een overzicht van de technologieen en tools waarmee ik ervaring heb opgedaan via school en projecten.</p>
 
           <!-- Tabs en items zijn gekoppeld via data-tools-tab en data-tools-panel; gebruik exact dezelfde categorienaam. -->
-          <div class="tool-tabs" aria-label="Skill categorieen">
+          <div class="tool-tabs d-flex flex-wrap" aria-label="Skill categorieen">
             <button class="tool-tab is-active" type="button" data-tools-tab="frontend" aria-pressed="true">[] Frontend</button>
             <button class="tool-tab" type="button" data-tools-tab="backend" aria-pressed="false">{} Backend</button>
             <button class="tool-tab" type="button" data-tools-tab="database" aria-pressed="false">== Database</button>
@@ -183,22 +183,22 @@
             </div>
           </div>
 
-          <div class="workflow-strip" aria-label="Werkwijze en ontwikkeling">
-            <div class="workflow-step">
+          <div class="workflow-strip row row-cols-1 row-cols-lg-3 g-0" aria-label="Werkwijze en ontwikkeling">
+            <div class="workflow-step col d-flex">
               <span class="workflow-marker" aria-hidden="true">01</span>
               <div>
                 <span class="workflow-title">Bouwen met basiskennis</span>
                 <span class="workflow-copy">HTML, CSS en JavaScript gericht inzetten voor nette, bruikbare pagina's.</span>
               </div>
             </div>
-            <div class="workflow-step">
+            <div class="workflow-step col d-flex">
               <span class="workflow-marker" aria-hidden="true">02</span>
               <div>
                 <span class="workflow-title">Projecten afronden</span>
                 <span class="workflow-copy">Ideeen uitwerken tot werkende portfolio-, quiz- en webprojecten.</span>
               </div>
             </div>
-            <div class="workflow-step">
+            <div class="workflow-step col d-flex">
               <span class="workflow-marker" aria-hidden="true">03</span>
               <div>
                 <span class="workflow-title">Blijven verbeteren</span>
@@ -213,8 +213,8 @@
     <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
+        <div class="footer-grid row align-items-start g-4">
+          <div class="footer-brand col-lg">
             <a class="footer-logo" href="index.html">Calvin Baas</a>
             <div class="footer-signature" aria-label="Focuspunten">
               <span>Design</span>
@@ -222,21 +222,21 @@
               <span>Gebruiksgemak</span>
             </div>
           </div>
-          <div class="footer-links">
-            <nav class="footer-nav" aria-label="Footer navigatie">
+          <div class="footer-links col-lg-auto row row-cols-2 g-4 justify-content-lg-end">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Footer navigatie">
               <a href="index.html">Home</a>
               <a href="about.html">About</a>
               <a href="skills.html">Skills</a>
               <a href="projecten.html">Projecten</a>
               <a href="contact.html">Contact</a>
             </nav>
-            <nav class="footer-nav" aria-label="Professionele links">
+            <nav class="footer-nav col d-flex flex-column" aria-label="Professionele links">
               <a href="#" target="_blank" rel="noopener">GitHub</a>
               <a href="#" target="_blank" rel="noopener">CV</a>
             </nav>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 text-center text-sm-start">
           <span>&copy; 2026 Calvin Baas</span>
           <span>Portfolio website</span>
         </div>

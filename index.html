@@ -36,13 +36,13 @@
     <header class="hero-section homepage-header">
       <div class="container">
         <div class="row align-items-center min-vh-100 hero-grid">
-          <div class="col-lg-7">
+          <div class="col-lg-7 text-center text-lg-start">
             <p class="eyebrow">Webdeveloper</p>
             <h1 class="display-3 fw-semibold text-white">Calvin Baas</h1>
-            <p class="lead hero-copy">Sinds ik ben gestart met mijn opleiding webdevelopment, ontdek ik steeds meer
+            <p class="lead hero-copy mx-auto mx-lg-0">Sinds ik ben gestart met mijn opleiding webdevelopment, ontdek ik steeds meer
               hoe leuk het is om idee&euml;n om te zetten in werkende websites. Ik focus me op duidelijke structuur, een
               moderne uitstraling en een fijne ervaring voor de gebruiker.</p>
-            <div class="d-flex flex-wrap gap-3 mt-4">
+            <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mt-4">
               <a class="btn btn-gold btn-lg" href="projecten.html">Bekijk projecten</a>
               <a class="btn btn-outline-light btn-lg" href="about.html">Meer over mij</a>
             </div>
@@ -54,12 +54,12 @@
               <h2>Frontend, backend en branding</h2>
               <p>Heldere interfaces, sterke typografie en elegante details die een project professioneler laten voelen.
               </p>
-              <div class="stat-grid">
-                <div>
+              <div class="stat-grid row g-3 mt-4">
+                <div class="col-6">
                   <strong>3+</strong>
                   <span>Projecten</span>
                 </div>
-                <div>
+                <div class="col-6">
                   <strong>2</strong>
                   <span>Focusgebieden</span>
                 </div>
@@ -69,7 +69,7 @@
           <div class="col-12">
             <!-- Codebar gebruikt vaste classnamen voor iconkleuren; voeg nieuwe technieken toe met bijpassende CSS. -->
             <div class="codebar-stack reveal" aria-label="Technologieen waarmee ik werk">
-              <div class="codebar-stack__track">
+              <div class="codebar-stack__track d-flex flex-wrap align-items-center justify-content-center">
                 <span class="codebar-tech">
                   <span class="codebar-icon codebar-icon--js">JS</span>
                   <span>JavaScript</span>
@@ -136,8 +136,8 @@
   <!-- Footer: dezelfde structuur staat op alle pagina's. Pas links/tekst overal gelijk aan voor consistentie. -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
+      <div class="footer-grid row align-items-start g-4">
+        <div class="footer-brand col-lg">
           <a class="footer-logo" href="index.html">Calvin Baas</a>
           <div class="footer-signature" aria-label="Focuspunten">
             <span>Design</span>
@@ -145,21 +145,21 @@
             <span>Gebruiksgemak</span>
           </div>
         </div>
-        <div class="footer-links">
-          <nav class="footer-nav" aria-label="Footer navigatie">
+        <div class="footer-links col-lg-auto row row-cols-2 g-4 justify-content-lg-end">
+          <nav class="footer-nav col d-flex flex-column" aria-label="Footer navigatie">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="skills.html">Skills</a>
             <a href="projecten.html">Projecten</a>
             <a href="contact.html">Contact</a>
           </nav>
-          <nav class="footer-nav" aria-label="Professionele links">
+          <nav class="footer-nav col d-flex flex-column" aria-label="Professionele links">
             <a href="#" target="_blank" rel="noopener">GitHub</a>
             <a href="#" target="_blank" rel="noopener">CV</a>
           </nav>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 text-center text-sm-start">
         <span>&copy; 2026 Calvin Baas</span>
         <span>Portfolio website</span>
       </div>
