@@ -26,7 +26,7 @@ projectTabs.forEach((tab) => {
       }
     });
 
-    // Categorieen zonder voorbeelden krijgen een korte melding in plaats van een lege lijst.
+    // Categorieen zonder projecten krijgen een korte melding in plaats van een lege lijst.
     if (projectEmpty) {
       projectEmpty.classList.toggle("is-visible", visibleCount === 0);
     }
